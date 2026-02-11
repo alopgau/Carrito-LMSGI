@@ -16,10 +16,12 @@ function crearCatalogo() {
   catalogo.forEach(it => {
     const figureProducto = iniciarCatalogo()
      const elementosProducto = crearProducto(it) 
-     figureProducto.append(elementosProducto.nombreProducto)
-     figureProducto.append(elementosProducto.etiquetaPrecio)
-     figureProducto.append(elementosProducto.bot1onCompra)
-     const botones = document.querySelectorAll("button")
+     dibujarProducto(figureProducto,elementosProducto)
+     });
+  
+}
+function activarBotones() {
+  const botones = document.querySelectorAll("button")
      for (const boton of botones) {
       let contador = 0
       boton.addEventListener("click", () => {
@@ -27,10 +29,8 @@ function crearCatalogo() {
         contador++
       })
      }
-  });
-  
 }
-function crearProducto() {
+function crearProducto(it) {
   const etiquetaPrecio = document.createElement("p")
      const nombreProducto = document.createElement("figcaption")
      const imagenProducto = document.createElement("img")
@@ -40,6 +40,11 @@ function crearProducto() {
      nombreProducto.innerText = it.nombre
      botonCompra.innerText = "Comprar"
      return {etiquetaPrecio, nombreProducto, imagenProducto, botonCompra}
+}
+function dibujarProducto(figureProducto, elementosProducto) {
+  figureProducto.append(elementosProducto.nombreProducto)
+     figureProducto.append(elementosProducto.etiquetaPrecio)
+     figureProducto.append(elementosProducto.botonCompra)
 }
 function iniciarCatalogo() {
 const section = document.querySelector("section")
@@ -51,5 +56,6 @@ const section = document.querySelector("section")
 }
 function main() {
   crearCatalogo()
+  activarBotones()
 }
 main()
