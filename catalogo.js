@@ -13,6 +13,7 @@ const carrito = [
    
 ];
 function crearCatalogo() {
+  
   catalogo.forEach(it => {
     const figureProducto = iniciarCatalogo()
      const elementosProducto = crearProducto(it) 
@@ -22,40 +23,53 @@ function crearCatalogo() {
 }
 function activarBotones() {
   const botones = document.querySelectorAll("button")
-     for (const boton of botones) {
-      let contador = 0
-      boton.addEventListener("click", () => {
-        carrito.push({productoId: it.id, cantidad: contador})
-        contador++
-      })
-     }
-}
-function crearProducto(it) {
-  const etiquetaPrecio = document.createElement("p")
-     const nombreProducto = document.createElement("figcaption")
-     const imagenProducto = document.createElement("img")
-     const botonCompra = document.createElement("button")
-     imagenProducto.setAttribute("src",it.imagen)
-     etiquetaPrecio.innerText = `${it.precio.toFixed(2)}€`
-     nombreProducto.innerText = it.nombre
-     botonCompra.innerText = "Comprar"
-     return {etiquetaPrecio, nombreProducto, imagenProducto, botonCompra}
-}
-function dibujarProducto(figureProducto, elementosProducto) {
-  figureProducto.append(elementosProducto.nombreProducto)
-     figureProducto.append(elementosProducto.etiquetaPrecio)
-     figureProducto.append(elementosProducto.botonCompra)
-}
-function iniciarCatalogo() {
-const section = document.querySelector("section")
-     const articleProducto = document.createElement("article")
-     const figureProducto = document.createElement("figure")
-     section.prepend(articleProducto)
-     articleProducto.prepend(figureProducto)
-     return figureProducto
-}
-function main() {
-  crearCatalogo()
-  activarBotones()
-}
-main()
+  for (const boton of botones) {
+    let contador = 0
+    boton.addEventListener("click", () => {
+      contador++
+      carrito.push({productoId: boton.id, cantidad: contador})
+      mostrarCarrito()
+    })
+  }
+  }
+  function crearProducto(it) {
+    const etiquetaPrecio = document.createElement("p")
+    const nombreProducto = document.createElement("figcaption")
+    const imagenProducto = document.createElement("img")
+    const botonCompra = document.createElement("button")
+    imagenProducto.setAttribute("src",it.imagen)
+    botonCompra.setAttribute("id", `${it.id}`)
+    etiquetaPrecio.innerText = `${it.precio.toFixed(2)}€`
+    nombreProducto.innerText = it.nombre
+    botonCompra.innerText = "Comprar"
+    return {etiquetaPrecio, nombreProducto, imagenProducto, botonCompra}
+  }
+  function dibujarProducto(figureProducto, elementosProducto) {
+    figureProducto.append(elementosProducto.nombreProducto)
+    figureProducto.append(elementosProducto.etiquetaPrecio)
+    figureProducto.append(elementosProducto.botonCompra)
+  }
+  function iniciarCatalogo() {
+    const section = document.querySelector("section")
+    const articleProducto = document.createElement("article")
+    const figureProducto = document.createElement("figure")
+    section.append(articleProducto)
+    articleProducto.prepend(figureProducto)
+    return figureProducto
+  }
+  function mostrarCarrito() {
+    const asideCarrito = document.querySelector(".carrito")
+    crearProductoCarrito(asideCarrito)
+
+  }
+  function crearProductoCarrito(asideCarrito) {
+      const EspacioProducto = document.createElement("li")
+      EspacioProducto.innerText = `${it.id}: ${it.cantidad}` 
+      asideCarrito.append(EspacioProducto)
+  }
+  function main() {
+    crearCatalogo()
+    activarBotones()
+  }
+  main()
+  
