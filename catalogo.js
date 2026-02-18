@@ -34,9 +34,13 @@ function activarBotones() {
   }
   function crearProducto(it) {
     const etiquetaPrecio = document.createElement("p")
+    etiquetaPrecio.classList.add("producto__precio")
     const nombreProducto = document.createElement("figcaption")
+    nombreProducto.classList.add("producto__nombre")
     const imagenProducto = document.createElement("img")
+    imagenProducto.classList.add("producto__imagen")
     const botonCompra = document.createElement("button")
+    botonCompra.classList.add("producto__boton")
     imagenProducto.setAttribute("src",it.imagen)
     botonCompra.setAttribute("id", `${it.id}`)
     etiquetaPrecio.innerText = `${it.precio.toFixed(2)}€`
@@ -52,7 +56,9 @@ function activarBotones() {
   function iniciarCatalogo() {
     const section = document.querySelector("section")
     const articleProducto = document.createElement("article")
+    articleProducto.classList.add("producto")
     const figureProducto = document.createElement("figure")
+    articleProducto.classList.add("producto")
     section.append(articleProducto)
     articleProducto.prepend(figureProducto)
     return figureProducto
