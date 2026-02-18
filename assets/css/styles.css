@@ -7,7 +7,9 @@
 :root {
     --color-primario: #3581B9;
     --color-secundario: #FCB07E;
-    --color-terciario: #dee2d6;
+    --color-terciario: #acef25c2;
+    --color-sombras: #c1121f;
+    --color-precio: #ffd60a;
     --color-blanco: #fff;
     --color-negro: #000;
 }
@@ -17,8 +19,69 @@ body {
 .titulo__seccion {
     color: var(--color-primario);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
 }
 .lista__filtros--elemento {
     font-weight: bold;
     text-align: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.05rem;
+}
+.lista__filtros {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    list-style: none;
+    padding: 1rem;
+    flex-wrap: wrap;
+    background-color: var(--color-precio);
+}
+.seccion__carrito {
+    gap: 1rem;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-content: center;
+}
+.catalogo {
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+}
+.producto {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-content: center;
+justify-items: center;
+align-items: center;
+padding-bottom: 0.5rem;
+background-color: #3581B9;
+ width: 50%;
+ height: 100%;
+ box-shadow: 3px 5px var(--color-sombras);
+ 
+}
+.producto__nombre {
+    color: var(--color-blanco);
+    padding: 0.1rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;    
+}
+.producto__precio {
+    color: var(--color-precio);
+    padding: .5rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;   
+    font-size: 1.3rem;
+    text-align: center;
+    
+}
+.producto__boton {
+    background-color: var(--color-terciario);
+    padding: 0rem 1rem 0rem 1rem;
 }
